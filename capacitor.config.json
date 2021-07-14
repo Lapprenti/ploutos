@@ -1,5 +1,5 @@
 {
-	"appId": "io.ionic.starter",
+	"appId": "com.lappranti.ploutos",
 	"appName": "Ploutos",
 	"webDir": "build",
 	"bundledWebRuntime": false
