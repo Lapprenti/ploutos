@@ -1,0 +1,7 @@
+{
+  "name": "Ploutos",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

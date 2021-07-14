@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "Ploutos",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}
