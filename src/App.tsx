@@ -26,6 +26,10 @@ import MainView from './pages/Core/MainView';
 import firebase from "firebase/app";
 import "firebase/auth";
 
+// Store & Store Providers
+import { Provider } from 'react-redux';
+import { store } from './store/store';
+
 var firebaseConfig = {
   apiKey: "AIzaSyAxL99_uPvFFlFV4Sv6OMZR1mhmEZc61Vs",
   authDomain: "ploutos-34.firebaseapp.com",
@@ -38,9 +42,11 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const App: React.FC = () => (
-  <IonApp>
-    <MainView />
-  </IonApp>
+  <Provider store={store}>
+    <IonApp>
+      <MainView />
+    </IonApp>
+  </Provider>
 );
 
 export default App;

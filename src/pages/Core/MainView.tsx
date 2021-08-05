@@ -1,16 +1,16 @@
 
-import { useState } from 'react';
 import { LoggedLayout } from '../../layouts/LoggedLayout';
 import { NonLoggedLayout } from '../../layouts/NonLoggedLayout';
+import IUser from '../../interfaces/IUser';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/combinedReducers';
 
 const MainView: React.FC = () => {
-  const [userIsLogged, setUserIsLogged] = useState(false);
-  console.log("userIsLogged")
-  console.log(userIsLogged)
-  return (userIsLogged ? 
+  const userFromStore: IUser | null = useSelector((state: RootState) => state.user.user);
+  return (userFromStore ? 
     <LoggedLayout /> 
   : 
-    <NonLoggedLayout setUser={setUserIsLogged}/>
+    <NonLoggedLayout />
   )
 };
 

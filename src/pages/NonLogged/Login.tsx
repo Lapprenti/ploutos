@@ -9,7 +9,7 @@ const Login: React.FC<ILogin> = (props: ILogin) => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar color={colors['French Sky Blue']}>
+        <IonToolbar color={colors.FrenchSkyBlue}>
           <IonTitle>Bienvenue</IonTitle>
         </IonToolbar>
       </IonHeader>
