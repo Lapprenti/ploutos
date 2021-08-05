@@ -8,7 +8,7 @@ import { IPersonnalization } from "../interfaces/IPersonnalization";
 
 /**
  * Function to log onto the app with google
- * @returns True if login successful, false if any error happen
+ * @returns "firebase.auth.UserCredential" object if login successful, false if any error happen
  */
 function loginWithGoogle() {
   const google = new firebase.auth.GoogleAuthProvider();
