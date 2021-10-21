@@ -1,11 +1,3 @@
-const colors = { 
-  "FrenchSkyBlue" : "#8fc1ff",
-  "LavenderBlue" : "#e3d2ff",
-  "PaleSilver": "#c6b7a9",
-  "Alabaster" : "#f4f4ee",
-  "DarkJungleGreen" : "#1a1e1b" 
-}
-
 const categoriesColors: Array<string> = [
   "#63b598", "#ce7d78", "#ea9e70", "#a48a9e", "#c6e1e8", "#648177" ,"#0d5ac1" ,
   "#f205e6" ,"#1c0365" ,"#14a9ad" ,"#4ca2f9" ,"#a4e43f" ,"#d298e2" ,"#6119d0",
@@ -48,4 +40,4 @@ const categoriesColors: Array<string> = [
   "#f812b3", "#b17fc9", "#8d6c2f", "#d3277a", "#2ca1ae", "#9685eb", "#8a96c6",
   "#dba2e6", "#76fc1b", "#608fa4", "#20f6ba", "#07d7f6", "#dce77a", "#77ecca"]
 
-export { colors, categoriesColors }
+export { categoriesColors }
