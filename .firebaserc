@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "ploutos-34"
+  },
+  "targets": {
+    "ploutos-34": {
+      "hosting": {
+        "test": [
+          "test-ploutos"
+        ],
+        "prod": [
+          "ploutos"
+        ]
+      }
+    }
   }
 }
