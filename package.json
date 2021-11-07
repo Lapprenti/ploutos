@@ -1,5 +1,5 @@
 {
-  "name": "Ploutos",
+  "name": "ploutos",
   "version": "0.0.1",
   "private": true,
   "dependencies": {
@@ -56,6 +56,7 @@
       "react-app/jest"
     ]
   },
+  "prettier": "@ionic/prettier-config",
   "browserslist": {
     "production": [
       ">0.2%",
@@ -69,7 +70,8 @@
     ]
   },
   "devDependencies": {
-    "@capacitor/cli": "3.1.1"
+    "@capacitor/cli": "3.1.1",
+    "@ionic/prettier-config": "^2.0.0"
   },
-  "description": "An Ionic project"
+  "description": "Follow your bills by adding them associated to a category"
 }
