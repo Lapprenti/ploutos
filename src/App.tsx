@@ -20,6 +20,8 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import './theme/global.css'
+
 import MainView from './pages/Core/MainView';
 
 // Firebase
