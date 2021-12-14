@@ -2,40 +2,56 @@ import { IonReactRouter } from '@ionic/react-router';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import Login from '../pages/NonLogged/Login';
-import { loginWithGoogle } from '../services/firebase.service';
+import { loginEmailPwd, loginWithGoogle } from '../services/firebase.service';
 
-import firebase from "firebase"
-import "firebase/auth"
+import firebase from 'firebase';
+import 'firebase/auth';
 
 import { loginUserAction } from '../store/user/Actions';
-import { handleFirebasePayloadToIUser, handleFirebaseUserTypePayloadToIUser } from "../services/user.service"
+import { handleFirebasePayloadToIUser, handleFirebaseUserTypePayloadToIUser } from '../services/user.service';
 import IUser from '../interfaces/IUser';
-
 
 const NonLoggedLayout: React.FC = () => {
   const dispatch = useDispatch();
   const dispatchLoginUserAction = (user: IUser) => {
-    dispatch(loginUserAction(user))
-  }
+    dispatch(loginUserAction(user));
+  };
 
   // Reprovide connected user to store on page reload.
   firebase.auth().onAuthStateChanged((user: firebase.User | null) => {
-    if(user) {
+    if (user) {
       const userRetrieved = handleFirebaseUserTypePayloadToIUser(user);
       console.log(`Previously connected user retrived, reconnecting ...`);
-      dispatchLoginUserAction(userRetrieved)
+      dispatchLoginUserAction(userRetrieved);
       console.log(`Successfully reconnected user.`);
     }
   });
 
-  return (
-  <IonReactRouter>
-    <Login onPress={() => loginWithGoogle().then((output: any) => {
-      const user = handleFirebasePayloadToIUser(output)
-      dispatchLoginUserAction(user)
-    })}/>
-  </IonReactRouter>
-  )
-}
+  const customLogin = (email: string, pwd: string) => {
+    loginEmailPwd(email, pwd).then((output: any) => {
+      const user = handleFirebasePayloadToIUser(output);
+      dispatchLoginUserAction(user);
+    });
+  };
 
-export { NonLoggedLayout }
+  const googleLogin = () => {
+    loginWithGoogle().then((output: any) => {
+      const user = handleFirebasePayloadToIUser(output);
+      dispatchLoginUserAction(user);
+    });
+  };
+
+  return (
+    <IonReactRouter>
+      <Login
+        onGoogleLogin={() => googleLogin()}
+        onCustomLogin={(email: string, pwd: string) => {
+          console.log(email, pwd);
+          customLogin(email, pwd);
+        }}
+      />
+    </IonReactRouter>
+  );
+};
+
+export { NonLoggedLayout };

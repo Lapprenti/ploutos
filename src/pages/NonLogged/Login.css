@@ -1,3 +1,23 @@
-ion-button.btn-login-with-google {
+.btn-login-with-google .btn-login-custom {
   --border-radius: 50px;
+}
+
+.title {
+  font-size: 24px;
+  font-family: 'Magra';
+}
+
+.text-separator {
+  font-size: 18px;
+  font-family: 'Magra';
+}
+
+.label-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid {
+  max-width: 90vw;
 }

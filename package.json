@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@capacitor/app": "1.0.2",
+    "@capacitor/browser": "^1.0.6",
     "@capacitor/core": "3.1.1",
     "@capacitor/haptics": "1.0.2",
     "@capacitor/keyboard": "1.0.2",
@@ -23,6 +24,7 @@
     "ionicons": "^6.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-hook-form": "^7.21.0",
     "react-redux": "^7.2.4",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
