@@ -14,32 +14,32 @@ import {
   IonItem,
   IonLabel,
 } from '@ionic/react';
-import { useForm } from 'react-hook-form';
+import { Browser } from '@capacitor/browser';
+// import { useForm, Controller } from 'react-hook-form';
+import { useIonFormState } from '../../../node_modules/react-use-ionic-form';
 import './Login.css';
 
-import { Browser } from '@capacitor/browser';
+// set the default values for the controls
+let initialValues = {
+  email: null,
+  pwd: null,
+};
 
 interface ILogin {
   onCustomLogin: (email: string, pwd: string) => void;
   onGoogleLogin: () => void;
 }
 
-let email: string;
-let pwd: string;
-
 const Login: React.FC<ILogin> = (props: ILogin) => {
-  const {
-    control,
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    defaultValues: { email: null, pwd: null },
-  });
-
   const onSubmit = (data: any) => {
     alert(JSON.stringify(data, null, 2));
   };
+
+  let { state, reset, item } = useIonFormState({
+    email: null,
+    pwd: null,
+  });
+
   return (
     <IonPage>
       <IonHeader>
@@ -87,12 +87,19 @@ const Login: React.FC<ILogin> = (props: ILogin) => {
             </IonCol>
           </IonRow>
           {/* Login or sign up custom */}
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form>
             <IonRow>
               <IonCol class="ion-text-center label-container">
                 <IonItem class="">
                   <IonLabel position="floating">Email</IonLabel>
-                  <IonInput defaultValue="" placeholder="type here" type="email"></IonInput>
+                  {/* <IonInput placeholder="type here" type="email"></IonInput> */}
+                  {item({
+                    name: 'email',
+                    label: 'Email',
+                    // override default Label renderer
+                    renderLabel: (props) => <IonLabel position="floating">Email</IonLabel>,
+                    renderContent: (props) => <IonInput type="email" {...props} />,
+                  })}
                 </IonItem>
               </IonCol>
             </IonRow>
@@ -100,21 +107,13 @@ const Login: React.FC<ILogin> = (props: ILogin) => {
               <IonCol class="ion-text-center label-container">
                 <IonItem class="">
                   <IonLabel position="floating">Mot de passe</IonLabel>
-                  <IonInput value={pwd} type="password"></IonInput>
+                  <IonInput type="password"></IonInput>
                 </IonItem>
               </IonCol>
             </IonRow>
             <IonRow>
               <IonCol class="ion-text-center">
-                <IonButton
-                  onClick={() => {
-                    console.log(email, pwd);
-                    props.onCustomLogin(email, pwd);
-                  }}
-                  className="btn-login-custom"
-                  color="dark"
-                  size="large"
-                >
+                <IonButton type="submit" className="btn-login-custom" color="dark" size="large">
                   Se connecter
                 </IonButton>
               </IonCol>
